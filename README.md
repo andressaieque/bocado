@@ -4,6 +4,8 @@
 
 Bocado é um app de auto-consultoria com IA para donos de lojas pequenas no iFood. Ele lê os dados da loja, aponta o que atrapalha as vendas, sugere estratégias, acompanha testes de 15 dias e ajuda a decidir o próximo passo. A sensação é a de um consultor conversando de igual para igual, e não a de um painel de relatórios.
 
+**[Ver o protótipo navegável](https://andressaieque.github.io/bocado/)** · **[Ver o guia de design](https://andressaieque.github.io/bocado/guia.html)**
+
 <p align="center">
   <img src="telas/01-login.png" width="200" alt="Tela de login do bocado">
   <img src="telas/02-dados-da-loja.png" width="200" alt="Tela para trazer os dados da loja">
