@@ -8,7 +8,7 @@
 <style>
 /* ===== Ajuste aqui ===== */
 :root{
-  --fundo:#F4F4F6;      /* cor de fundo da página (troque para combinar com o portfólio) */
+  --fundo:transparent;  /* fundo transparente: só o celular aparece */
   --moldura:#111114;    /* cor da moldura do celular */
   --texto:#111114;
   --mudo:#6B6B74;
@@ -18,17 +18,15 @@
 *{box-sizing:border-box}
 html,body{margin:0;height:100%}
 body{background:var(--fundo);color:var(--texto);font-family:Outfit,system-ui,sans-serif;overflow:hidden}
-.palco{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:16px}
+.palco{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:0}
+.com-controles .palco{padding:16px}
 /* área que recebe o celular; o tamanho real do celular vem do JS */
 .area{flex:1;min-height:0;width:100%;display:flex;align-items:center;justify-content:center}
 .escala{flex:none;position:relative}
 /* celular no tamanho real: tela 390x844 + 12px de borda */
 .cel{position:absolute;left:0;top:0;width:414px;height:868px;transform-origin:0 0;
   background:var(--moldura);border-radius:62px;padding:12px;
-  box-shadow:0 0 0 2px #2c2c33 inset,0 30px 70px rgba(17,17,20,.22),0 8px 20px rgba(17,17,20,.12)}
-.cel:before,.cel:after{content:"";position:absolute;width:4px;background:#2a2a30;border-radius:2px}
-.cel:before{left:-4px;top:170px;height:64px;box-shadow:0 84px 0 #2a2a30}
-.cel:after{right:-4px;top:210px;height:96px}
+  box-shadow:0 0 0 2px #2c2c33 inset}
 .tela{position:relative;width:390px;height:844px;border-radius:50px;overflow:hidden;background:#fff;isolation:isolate}
 .tela iframe{position:absolute;inset:0;width:390px;height:844px;border:0;display:block;background:#fff;transition:opacity .35s ease}
 .tela iframe.sai{opacity:0}
@@ -47,7 +45,7 @@ body{background:var(--fundo);color:var(--texto);font-family:Outfit,system-ui,san
 .botoes button{height:36px;min-width:36px;padding:0 14px;border:1px solid #DCDCE0;background:#fff;border-radius:99px;font:inherit;font-size:13px;color:var(--texto);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .botoes button:hover{border-color:var(--texto)}
 .botoes button:focus-visible,.passo:focus-visible{outline:2px solid var(--texto);outline-offset:2px}
-.sem-controles .ctl{display:none}
+.ctl{display:none}.com-controles .ctl{display:flex}
 @media (prefers-reduced-motion:reduce){.tela iframe{transition:none}}
 </style>
 </head>
@@ -76,7 +74,7 @@ var TELAS = [{"id":"Main.dc.html","nome":"Login","tempo":4500,"doc":"<!doctype h
 (function(){
   var W = 414, H = 868;                       // celular com borda
   var params = new URLSearchParams(location.search);
-  if (params.get('controles') === '0') document.body.classList.add('sem-controles');
+  if (params.get('controles') === '1') document.body.classList.add('com-controles');  // controles escondidos, a não ser com ?controles=1
 
   var area = document.getElementById('area');
   var escala = document.getElementById('escala');
